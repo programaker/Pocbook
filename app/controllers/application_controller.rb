@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include RestGraph::RailsUtil
   protect_from_forgery
   before_filter :setup
 private

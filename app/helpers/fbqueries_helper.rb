@@ -1,0 +1,2 @@
+module FbqueriesHelper
+end
