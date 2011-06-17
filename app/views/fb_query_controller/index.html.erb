@@ -1,12 +1,20 @@
 <%= form_tag root_path, :method => :get do %>
-  <%= text_area_tag :query, nil, :size => "40x10" %>
-  <br/>
-  <%= submit_tag :Execute %>
-  <br/>
+  <%= text_area_tag :query, nil, :size => "100x10" %><br/>
+  <%= submit_tag "Execute FBQuery" %><br/>
+  
+  <hr>
+
+  <% if @query %>
+    <h5><%= @query %></h5>
+    <hr>
+  <% end %>
 
   <% if @result && !@result.empty? %>
     <% @result.each do |r| %>
-      <pre><%= r %></pre>
+      <% r.each do |key, value| %>
+        <spam><%= key %></spam> = <spam><%= value %></spam><br/>
+      <% end %>
+      
       <hr/>
     <% end %>
   <% end %>
