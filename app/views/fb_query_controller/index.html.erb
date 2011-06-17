@@ -1,0 +1,14 @@
+<%= form_tag root_path, :method => :get do %>
+  <%= text_area_tag :query %>
+  <br/>
+  <%= submit_tag :Execute %>
+  <br/>
+
+  <% if @result && !@result.empty? %>
+    <% @result.each do |r| %>
+      <pre><%= r["name"] %></pre>
+      <img src="<%= r['pic_square'] %>"><br/>
+      <hr/>
+    <% end %>
+  <% end %>
+<% end %>
