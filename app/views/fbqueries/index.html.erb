@@ -1,4 +1,6 @@
-<%= form_tag fbqueries_path do %>
+<%= form_tag fbqueries_path, :method => :get do %>
   <%= text_area_tag :query, nil, :size => "100x10" %><br/>
-  <%= submit_tag "Execute FBQuery" %><br/>
+  <%= submit_tag "Execute FBQuery" %>
 <% end %>
+
+<%= link_to 'Home', root_path %>
