@@ -1,9 +1,16 @@
 class UploadsController < ApplicationController
   def index
-    rest_graph.get('me')
+    
   end
 
   def create
-    @access_token = rest_graph.access_token
+    photo_file = params[:photo]
+
+    if photo_file
+        @photo = Photo.new
+        @photo.save_photo photo_file
+    end
+
+    render :action => 'index'
   end
 end
