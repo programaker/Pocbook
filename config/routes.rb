@@ -1,4 +1,8 @@
 Pocbook::Application.routes.draw do
+  get "uploads/new"
+
+  get "uploads/create"
+
   resources :fbqueries
   root :to => "home#index"
 
