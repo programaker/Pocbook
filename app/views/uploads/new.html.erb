@@ -1,2 +1,10 @@
-<h1>Uploads#new</h1>
-<p>Find me in app/views/uploads/new.html.erb</p>
+<h5><%= @access_token %></h5>
+
+<%= form_tag "https://graph.facebook.com/me/photos?access_token=#{@access_token}", :multipart => true do %>
+  <label for="file">Photo to Upload</label> <%= file_field_tag "photo" %><br/><hr/>
+  <%= submit_tag "Post photo" %>
+<% end %>
+
+<hr/>
+
+<%= link_to 'Home', root_path %>
