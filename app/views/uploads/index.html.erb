@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+  <hr/>
+<% end %>
+
 <%= form_tag uploads_path, :multipart => true do %>
   <label for="file">Photo to Upload</label> <%= file_field_tag "photo" %><br/><hr/>
   <%= submit_tag "Post photo" %>
@@ -6,7 +11,7 @@
 <hr/>
 
 <% if @photo %>
-  <%= image_tag @photo.photo_path_for_view %>
+  <%= link_to image_tag(@photo.photo_path_for_view, :title => 'Send to Facebook'), "/uploads/#{@photo.id}/facebook" %>
   <hr/>
 <% end %>
 

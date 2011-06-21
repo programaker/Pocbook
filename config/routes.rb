@@ -1,5 +1,10 @@
 Pocbook::Application.routes.draw do
-  resources :uploads
+  resources :uploads do
+    member do 
+      get "facebook"
+    end
+  end
+
   resources :fbqueries
   root :to => "home#index"
 
