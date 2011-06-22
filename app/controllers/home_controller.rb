@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    rest_graph.get('me')
+    
   end
 
-  def store_token
+  def index_via_post
     render :action => 'index'
   end
 end

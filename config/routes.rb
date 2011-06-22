@@ -6,7 +6,7 @@ Pocbook::Application.routes.draw do
   end
 
   resources :fbqueries
-  match "/" => "home#store_token", :as => "root", :via => :post
+  match "/" => "home#index_via_post", :as => "root", :via => :post
   root :to => "home#index"
 
   # The priority is based upon order of creation:
