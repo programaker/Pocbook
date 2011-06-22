@@ -7,6 +7,7 @@ Pocbook::Application.routes.draw do
 
   resources :fbqueries
   match "/" => "home#index_via_post", :as => "root", :via => :post
+  match "/uploads/:id/facebook" => "uploads#post_photo_comment", :via => :post
   root :to => "home#index"
 
   # The priority is based upon order of creation:

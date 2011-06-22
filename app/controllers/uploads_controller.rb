@@ -15,26 +15,39 @@ class UploadsController < ApplicationController
   end
 
   def facebook
-    id = params[:id]
+    photo_id = params[:id]
     access_token = rest_graph.access_token
     
     graph_url = "https://graph.facebook.com/me/photos"
-    photo_path = Dir["#{PhotoPersistence::PHOTO_UPLOAD_DIR}/photo_#{id}.*"].first
-    notice = nil
+    photo_path = Dir["#{PhotoPersistence::PHOTO_UPLOAD_DIR}/photo_#{photo_id}.*"].first
     
     RestClient.post(graph_url, :access_token => access_token, :photo => File.new(photo_path, 'rb')) do |response, request, result|
       status_ok = 200
 
       case response.code
         when status_ok
-          notice = "Photo successfully uploaded"
-          puts notice
+          puts ">>> Photo successfully uploaded"
+          photo_fb_id = response.split(':').last.split('"')[1]
+          rest_graph.post("#{photo_fb_id}/comments", :message => params[:comment], :photo_fb_id => photo_fb_id)
         else
-          notice = "Upload failed - RESPONSE_CODE = #{response.code}"
-          puts notice
+          puts ">>> Upload failed - RESPONSE_CODE = #{response.code}"
       end
     end
 
-    render :action => 'index', :notice => notice
+    photo = Photo.new
+    photo.id = photo_id
+    photo.delete_photo
+
+    render :action => 'index'
+  end
+
+  def post_photo_comment
+    photo_fb_id = params[:photo_fb_id]
+
+    if photo_fb_id
+      rest_graph.post("#{photo_fb_id}/comments", :message => params[:comment])
+    end
+
+    render :action => 'index'
   end
 end

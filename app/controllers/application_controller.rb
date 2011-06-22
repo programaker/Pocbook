@@ -9,7 +9,7 @@ private
       :canvas => 'Pocbuque',
       :auto_authorize_scope => 'email,user_photos,friends_photos,publish_stream',
       :secret => '00355ed7f4190c450e4b0d8e5a700084',
-      :auto_authorize => true,
+      #:auto_authorize => true,
       :write_session => true
     )
 

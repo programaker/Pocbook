@@ -2,6 +2,10 @@ class Photo
   include PhotoPersistence
   attr_accessor :id
 
+  def initialize(photo_id = nil)
+    @id = photo_id
+  end
+
   def photo_filename
     if id
       "photo_#{id}"
