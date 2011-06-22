@@ -1,12 +1,10 @@
 class UploadsController < ApplicationController
   def index
-    rest_graph.get('me')
+    
   end
 
   def create
     photo_file = params[:photo]
-    access_token = rest_graph.access_token
-    session[:token] = access_token if access_token && !access_token.empty?
 
     if photo_file
         @photo = Photo.new
@@ -18,7 +16,8 @@ class UploadsController < ApplicationController
 
   def facebook
     id = params[:id]
-    access_token = session[:token]
+    access_token = rest_graph.access_token
+    
     graph_url = "https://graph.facebook.com/me/photos"
     photo_path = Dir["#{PhotoPersistence::PHOTO_UPLOAD_DIR}/photo_#{id}.*"].first
     notice = nil

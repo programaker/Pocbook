@@ -8,7 +8,11 @@ private
       :app_id => '219508714739118',
       :canvas => 'Pocbuque',
       :auto_authorize_scope => 'email,user_photos,friends_photos,publish_stream',
-      :secret => '00355ed7f4190c450e4b0d8e5a700084'
+      :secret => '00355ed7f4190c450e4b0d8e5a700084',
+      :auto_authorize => true,
+      :write_session => true
     )
+
+    puts "\n\n>>> #{self.class.name}.setup: access_token = #{rest_graph.access_token}"
   end
 end
