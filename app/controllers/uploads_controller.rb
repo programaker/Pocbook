@@ -34,10 +34,7 @@ class UploadsController < ApplicationController
       end
     end
 
-    photo = Photo.new
-    photo.id = photo_id
-    photo.delete_photo
-
+    Photo.new(photo_id).delete_photo
     render :action => 'index'
   end
 end

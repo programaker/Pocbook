@@ -13,7 +13,7 @@
 <% if @photo %>
   <%= image_tag @photo.photo_path_for_view %><br/>
 
-  <%= form_tag "/uploads/#{@photo.id}", :method => :put do %>
+  <%= form_tag "/uploads/#{@photo.photo_id}", :method => :put do %>
     <label for="comment">Comment: </label><%= text_field_tag :comment, nil, :length => 500 %>
     <%= submit_tag "Send photo & comment" %>
   <% end %>
