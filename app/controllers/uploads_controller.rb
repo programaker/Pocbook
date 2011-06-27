@@ -14,7 +14,7 @@ class UploadsController < ApplicationController
     render :action => 'index'
   end
 
-  def facebook
+  def update
     photo_id = params[:id]
     access_token = rest_graph.access_token
     
@@ -37,16 +37,6 @@ class UploadsController < ApplicationController
     photo = Photo.new
     photo.id = photo_id
     photo.delete_photo
-
-    render :action => 'index'
-  end
-
-  def post_photo_comment
-    photo_fb_id = params[:photo_fb_id]
-
-    if photo_fb_id
-      rest_graph.post("#{photo_fb_id}/comments", :message => params[:comment])
-    end
 
     render :action => 'index'
   end

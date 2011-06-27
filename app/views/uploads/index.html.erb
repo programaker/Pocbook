@@ -11,8 +11,13 @@
 <hr/>
 
 <% if @photo %>
-  <%= link_to image_tag(@photo.photo_path_for_view, :title => 'Send to Facebook'), "/uploads/#{@photo.id}/facebook" %><br/>
-  <label for="comment">Comment</label><%= text_field_tag :comment, nil, :length => 200 %>
+  <%= image_tag @photo.photo_path_for_view %><br/>
+
+  <%= form_tag "/uploads/#{@photo.id}", :method => :put do %>
+    <label for="comment">Comment: </label><%= text_field_tag :comment, nil, :length => 500 %>
+    <%= submit_tag "Send photo & comment" %>
+  <% end %>
+  
   <hr/>
 <% end %>
 
