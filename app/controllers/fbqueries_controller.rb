@@ -1,6 +1,6 @@
 class FbqueriesController < ApplicationController
   def index
-    
+    @query = params[:query]
   end
 
   def create

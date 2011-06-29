@@ -1,4 +1,4 @@
-<%= link_to 'Back', fbqueries_path %>
+<%= link_to 'Back', fbqueries_path(:query => @query) %>
 
 <% if @query %>
   <h5><%= @query %></h5>
