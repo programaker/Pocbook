@@ -6,6 +6,9 @@
 <% end %>
 
 <% if @result && !@result.empty? %>
+  <spam><%= @result.length %> Records found</spam>
+  <hr/>
+
   <% @result.each do |r| %>
     <% r.each do |key, value| %>
       <spam><%= key %></spam> = <spam><%= value %></spam><br/>
